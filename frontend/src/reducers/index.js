@@ -19,26 +19,31 @@ const reducer = (state = initialState, action) => {
             }
         case 'DELETE_USER_ID': // удаление по айди юзера
             const deletedUser = state.users.filter(user => {
-                return user.id != action.payload;
+                return user.id !== action.payload;
             })
             return {
                 ...state,
                 users: deletedUser
             }
         case 'CHANGE_SELECT': // смена select
+            let typeSelect;
             const selectUser = state.users.map(user => {
-                if(action.payload == user.id){
+                if(action.payload === user.id){
+                    typeSelect = !user.isSelect;
                     return {
                         ...user,
-                        isSelect: !user.isSelect
+                        isSelect: typeSelect
                     }
                 }
                 return user;
             })
+            const stateHeadInput = selectUser.reduce((total, { isSelect }) => total + isSelect, 0);
+            
             return {
                 ...state,
-                btnState: 'active',
-                users: selectUser
+                users: selectUser,
+                btnState: typeSelect ? 'active' : 'disable',
+                selectSomeUsers: !!stateHeadInput
             }
         case 'CHANGE_ALL_SELECT': // смена всех select
             const newUsers = state.users.map(user => {

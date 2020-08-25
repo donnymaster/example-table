@@ -27,7 +27,7 @@ class App extends React.Component{
     }
     
     render(){
-        const { loading, users } = this.props;
+        const { loading, users, btnState } = this.props;
 
         if(loading){
             return (
@@ -38,15 +38,18 @@ class App extends React.Component{
         return (
             <StyledApp>
                 <Table users={users} />
-                <BtnDelete onClickDelete={this.deleteUsers}/>
+                <BtnDelete onClickDelete={this.deleteUsers} stateBtn={btnState}/>
             </StyledApp>
         )
     }
 }
 
 // функция, которая передает стейт из стора в компонент
-const mapStateToProps = ({ users, loading, selectSomeUsers, selectAll }) => {
-    return { users, loading, selectSomeUsers, selectAll }
+const mapStateToProps = ({ users, loading, 
+                           selectSomeUsers, 
+                           selectAll, 
+                           btnState }) => {
+    return { users, loading, selectSomeUsers, selectAll, btnState }
 }
 // объект, который передает dispatch в компонент
 const mapDispatchToProps = (dispatch) => {

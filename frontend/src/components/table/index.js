@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../input';
 import Record from '../record';
 import { changeSelectAll, deleteUser, changeSelect } from '../../actions';
+import withApiService from '../hoc';
 import { connect } from 'react-redux';
 import { compose } from '../../utils';
 
@@ -19,9 +20,11 @@ class Table extends React.Component{
         if(!result){
             return;
         }
-        const { deleteUser } = this.props;
+        const { deleteUser, ApiService } = this.props;
         deleteUser(id);
         // api delete user
+        ApiService.delete_user(id)
+            .then((res) => console.log(res));
     }
 
     setSelectUser = (id) => {
@@ -30,12 +33,14 @@ class Table extends React.Component{
     } 
 
    render(){
-       const { users, selectAll } = this.props;
+       const { users, selectAll, selectSomeUsers } = this.props;
     return(
         <div>
             <s.StyledTitle>Таблица пользователей</s.StyledTitle>
             <s.StyledTable>
-                <TableHead changeSelectAll={this.changeSelectAll} selectAll={selectAll}/>
+                <TableHead selectSomeUsers={selectSomeUsers} 
+                           changeSelectAll={this.changeSelectAll} 
+                           selectAll={selectAll}/>
                 <s.StyledTbody>
                     {
                         users.map((user, id) => {
@@ -55,14 +60,14 @@ class Table extends React.Component{
    }
 }
 
-function TableHead({ changeSelectAll, selectAll }) {
+function TableHead({ changeSelectAll, selectAll, selectSomeUsers }) {
 
     const fields = ['№', 'ФИО', 'Возраст (Лет)', 'Рост', 'Вес', 'Зарплата'];
     return (
         <s.StyledThead>
             <tr>
                 <s.StyledTheadTh>
-                    <Input click={changeSelectAll} isChecked={selectAll} />
+                    <Input disabled={selectSomeUsers} click={changeSelectAll} isChecked={selectAll} />
                 </s.StyledTheadTh>
                {
                    fields.map((item, id) => {
@@ -80,8 +85,8 @@ function TableHead({ changeSelectAll, selectAll }) {
 }
 
 // функция, которая передает стейт из стора в компонент
-const mapStateToProps = ({ selectAll }) => {
-    return { selectAll }
+const mapStateToProps = ({ selectAll, selectSomeUsers }) => {
+    return { selectAll, selectSomeUsers }
 }
 // объект, который передает dispatch в компонент
 const mapDispatchToProps = (dispatch) => {
@@ -99,5 +104,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default compose(
+    withApiService(),
     connect(mapStateToProps, mapDispatchToProps)
 )(Table);

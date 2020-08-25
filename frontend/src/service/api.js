@@ -1,6 +1,7 @@
 // api host
 const host = document.location.hostname; // or any
-const port = 8000; // or any
+//const port = document.location.port;
+const port = 8000; // developer port laravel server
 
 class ApiService {
 

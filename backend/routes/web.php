@@ -13,8 +13,3 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    dd(User::find(1)->toArray('created_at'));
-    return view('welcome');
-});

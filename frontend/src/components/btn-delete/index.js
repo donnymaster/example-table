@@ -5,8 +5,14 @@ class BtnDelete extends React.Component {
 
     render(){
         const { onClickDelete, stateBtn } = this.props;
+
         return (
-            <StyledBtn state={stateBtn} onClick={onClickDelete}>Удалить выбранные</StyledBtn>
+            <StyledBtn state={stateBtn} 
+                       disabled={stateBtn === 'disable'} 
+                       onClick={onClickDelete}
+            >
+                Удалить выбранные
+            </StyledBtn>
         )
     }
 }

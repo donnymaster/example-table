@@ -6,35 +6,24 @@ const StyledBtn = styled.button`
     font-family: Roboto;
     font-size: 14px;
     font-weight: bold;
-    
-    background-color: ${(props) => {
-        if(props.state === 'disable'){
-            return "#ffffff";
-        }else{
-            return "#0085be";
-        } 
-    }};
-
-    color: ${(props) => {
-        if(props.state === 'disable'){
-            return "#dadada";
-        }else{
-            return "#ffffff";
-        } 
-    }};
-    border: ${(props) => {
-        if(props.state === 'disable'){
-            return "solid 2px #dadada";
-        }else{
-            return "none";
-        } 
-    }};
+    color: #ffffff;
+    border: solid 2px white;
+    background-color: #0085be;
     cursor: pointer;
     margin-left: auto;
     display: block;
     &:hover{
-        background: ${props => props.state === 'disable' ? 'initial' : '#02597e'};
-        cursor: ${props => props.state === 'disable' ? 'auto' : 'pointer'};
+        background: #02597e;
+        cursor: pointer;
+    }
+    &:disabled{ 
+        color: #dadada;
+        border: solid 2px #dadada;
+        background-color: #ffffff;
+        &:hover{
+            background: initial;
+            cursor: auto;
+        }
     }
     &:active{
         outline: none;

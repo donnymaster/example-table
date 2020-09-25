@@ -5,10 +5,16 @@ const getAge = (timestamp) => {
     return today.getFullYear() - birthDate.getFullYear();
 }
 
+
 const feetToMeters = (ft) => { // format '1.31'
-    const result = ft.split("'");
+    const result = String(ft).split(".");
     const mt = parseInt(result[0], 10) / 3.2808; // футы
     const sm = parseInt(result[1], 10) * 2.54; // дюймы
+
+    if(result.length === 1){
+        return `${mt.toFixed(0)}м`;
+    }
+
     if(parseInt(mt.toFixed(0)) === 0){
         return `${sm.toFixed(0)}см`;
     }

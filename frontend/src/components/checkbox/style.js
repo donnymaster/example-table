@@ -5,6 +5,7 @@ const StyledLabel = styled.label`
     width: 18px;
     height: 18px;
     display: block;
+    cursor: pointer;
     &::after{
         content: "";
         position: absolute;
@@ -29,12 +30,12 @@ const StyledLabel = styled.label`
     }
 `;
 
-const StyledInput = styled.input`
+const StyledCheckbox = styled.input`
     display: none;
 `;
 
 
 export {
-    StyledInput,
+    StyledCheckbox,
     StyledLabel
 }

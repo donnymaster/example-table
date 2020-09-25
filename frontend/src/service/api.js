@@ -2,6 +2,7 @@
 const host = document.location.hostname; // or any
 //const port = document.location.port;
 const port = 8000; // developer port laravel server
+const accessToken = 'z-wtobH9a5MGt0@';
 
 class ApiService {
 
@@ -35,7 +36,8 @@ class ApiService {
     const result = await fetch(`http://${host}:${port}/api/employees`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'access_token': accessToken
           },
         body: JSON.stringify(data)
     });
@@ -46,13 +48,16 @@ class ApiService {
    async delete_user(id){
     const result = await fetch(`http://${host}:${port}/api/employees/${id}`, {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'access_token': accessToken
         },
         method: 'DELETE'
     });
     const body = await result.json();
     return body;
    }
+
+   
 }
 
 export default ApiService;

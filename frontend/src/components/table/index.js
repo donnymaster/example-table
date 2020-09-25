@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../input';
+import Checkbox from '../checkbox';
 import Record from '../record';
 import { changeSelectAll, deleteUser, changeSelect } from '../../actions';
 import withApiService from '../hoc';
@@ -62,12 +62,13 @@ class Table extends React.Component{
 
 function TableHead({ changeSelectAll, selectAll, selectSomeUsers }) {
 
-    const fields = ['№', 'ФИО', 'Возраст (Лет)', 'Рост', 'Вес', 'Зарплата'];
+    const fields = ['№', 'ФИО', 'Возраст (Лет)', 'Рост', 'Вес', 'Зарплата', 'Должности'];
+    console.log(selectSomeUsers);
     return (
         <s.StyledThead>
             <tr>
                 <s.StyledTheadTh>
-                    <Input disabled={selectSomeUsers} click={changeSelectAll} isChecked={selectAll} />
+                    <Checkbox idx={`title`} disabled={selectSomeUsers} click={changeSelectAll} isChecked={selectAll} />
                 </s.StyledTheadTh>
                {
                    fields.map((item, id) => {

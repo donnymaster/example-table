@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: selectUser,
-                btnState: typeSelect ? 'active' : 'disable',
+                btnState: typeSelect || stateHeadInput ? 'active' : 'disable',
                 selectSomeUsers: !!stateHeadInput
             }
         case 'CHANGE_ALL_SELECT': // смена всех select
@@ -64,7 +64,7 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 selectAll: false,
                 btnState: 'disable',
-                selectSomeUsers: true
+                selectSomeUsers: false
             }
         default:
             return state;

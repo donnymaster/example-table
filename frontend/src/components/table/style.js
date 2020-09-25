@@ -41,6 +41,9 @@ const StyledTheadTh = styled.th`
     &:nth-child(2){
      width: 20px;
     }
+    &:nth-child(8){
+    text-align:center;
+    }
 `;
 
 const StyledTbody = styled.tbody`

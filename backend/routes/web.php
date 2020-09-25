@@ -1,7 +1,11 @@
 <?php
 
-use App\User;
+use App\Employee;
+use App\Position;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Arr;
+use App\Http\Resources\EmployeeResource;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
-    dd(User::find(1)->toArray('created_at'));
-    return view('welcome');
+    // return view('welcome');
 });

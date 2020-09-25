@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'API'], function () {
-    Route::get('/employees', 'UserController@index');
-    Route::post('/employees', 'UserController@store');
-    Route::delete('/employees/{id}', 'UserController@destroy');
+    Route::get('/employees', 'EmployeeController@index');
+    Route::post('/employees', 'EmployeeController@store')->middleware('access.token');
+    Route::delete('/employees/{id}', 'EmployeeController@destroy')->middleware('access.token');
 });

@@ -5,12 +5,12 @@
          colors="true"
 >
     <testsuites>
-         <testsuite name="TestApi">
-            <directory suffix="TestDeleteUserPositive.php">./tests/Feature/TestApi</directory>
-         </testsuite>
-         <testsuite name="TestApi">
-            <directory suffix="TestDeleteUserNegative.php">./tests/Feature/TestApi</directory>
-         </testsuite>
+        <testsuite name="TestApi">
+            <directory suffix="TestDeleteUser.php">./tests/Feature/TestApi</directory>
+        </testsuite>
+        <testsuite name="TestApi">
+            <directory suffix="TestHeaderToken.php">./tests/Feature/TestApi</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

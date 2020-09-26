@@ -25,7 +25,8 @@ class EmployeeRequest extends FormRequest
             'height' => 'numeric',
             // // 'height' => 'string|regex:/\d{1,}(\')\d{1,}(")/i',
             'salary' => 'numeric',
-            'position' => 'array'
+            'position' => 'array',
+            'position.*.id' => 'numeric|exists:positions,id'
         ];
     }
 

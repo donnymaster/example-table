@@ -194,6 +194,7 @@ return [
         'weight'                => 'Вес',
         'height'                => 'Рост',
         'salary'                => 'Зарплата',
-        'position'              => 'Должность'
+        'position'              => 'Должность',
+        'position.*.id'         => 'должности'
     ],
 ];

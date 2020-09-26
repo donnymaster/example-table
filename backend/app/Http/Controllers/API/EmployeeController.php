@@ -21,7 +21,7 @@ class EmployeeController extends Controller
     public function index()
     {
         return EmployeeResource::collection(
-            Employee::with('positions')->paginate(10)
+            Employee::with('positions')->paginate(20)
         );
     }
 
@@ -42,7 +42,7 @@ class EmployeeController extends Controller
                 foreach ($positions as $position) {
                     EmployeePosition::create([
                         'employee_id' => $employee->id,
-                        'position_id' => $position
+                        'position_id' => $position['id']
                     ]);
                 }
             }

@@ -32,6 +32,20 @@ class ApiService {
         });
    }
 
+   /**
+    * 
+    * Format data create user (object)
+    * {
+    *   first_name: 'Mark', // - required
+    *   last_name: 'Singer', // - required
+    *   date_of_birth: '2020-06-06', // required|format:Y-m-d
+    *   weight: number,
+    *   height: number,
+    *   salary: number,
+    *   position[]: [ {id: 1}, {id: 2}, {id: 3} ] {id: 1}, // -> id position
+    * }
+    */
+
    async create_user(data){
     const result = await fetch(`http://${host}:${port}/api/employees`, {
         method: 'POST',

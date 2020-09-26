@@ -7,6 +7,7 @@ const getAge = (timestamp) => {
 
 
 const feetToMeters = (ft) => { // format '1.31'
+    if(!ft) return ft;
     const result = String(ft).split(".");
     const mt = parseInt(result[0], 10) / 3.2808; // футы
     const sm = parseInt(result[1], 10) * 2.54; // дюймы
@@ -22,6 +23,7 @@ const feetToMeters = (ft) => { // format '1.31'
 }
 
 const lbToKl = (lb) => {
+    if(!lb) return lb;
     const kl = lb / 2.2046;
     return `${kl.toFixed(0)}кг`;
 }

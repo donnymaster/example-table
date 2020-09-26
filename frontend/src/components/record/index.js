@@ -15,51 +15,59 @@ function Record(props) {
 
     return(
         <s.StyledTr>
-            <td>
+            <Td>
                 <Checkbox idx={idx} 
                           click={() => setSelect(id)} 
                           isChecked={isSelect} />
-            </td>
-            <td>
-                {idx + 1}
-            </td>
-            <td>
-                {full_name}
-            </td>
-            <td>
-                {getAge(date_of_birth)}
-            </td>
-            <td>
-                {feetToMeters(height)}
-            </td>
-            <td>
-                {lbToKl(weight)}
-            </td>
-            <td>
-                {salary}
-            </td>
-            <td>
+            </Td>
+
+            <Td value={idx + 1}/>
+            <Td value={full_name}/>
+            <td>{getAge(date_of_birth)}</td>
+            <Td value={feetToMeters(height)}/>
+            <Td value={lbToKl(weight)}/>
+            <Td value={salary}/>
+
+            <Td>
                 <WatchPoitions onClick={() => changeVisibleForm(true)} />
                 {
                     formVisible && <Form title={`Должности сотрудника ${titleForm}`} 
                                          render={() => <RenderPositionList positions={positions} />} 
                                          actionClose={() => changeVisibleForm(false)}/>
                 }
-            </td>
-            <td>
+            </Td>
+            <Td>
                 <EditBtn />
                 <DeleteBtn click={() => deleteRecord(id)} />
-            </td>
+            </Td>
         </s.StyledTr>
     )
 } 
+
+function Td({ value, children }) {
+
+    if(children){
+        return (
+            <td>
+                {children}
+            </td>
+        )
+    }
+    return (
+        <td>
+            {
+                value || 'не известно'
+            }
+        </td>
+    )
+}
 
 function RenderPositionList({ positions }){
     console.log(positions);
     if(positions.length === 0){
         return (
             <div>
-                Должности отсутсвуют
+                Должности отсутствуют
             </div>
         )
     }

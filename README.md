@@ -17,3 +17,21 @@
 ```
 3. Выполнить команду `npm run build`
 4. В папке, где собрался проект запустить локальный сервер: `php -S localhost:9090`
+
+## Формат данных для создания сотрудника
+
+```
+	 {
+       first_name: 'Mark', // - required
+       last_name: 'Singer', // - required
+       date_of_birth: '2020-06-06', // required|format:Y-m-d
+       weight: number,
+       height: number,
+       salary: number,
+       position[]: [ {id: 1}, {id: 2}, {id: 3} ] {id: 1}, // -> id position
+     }
+```
+
+## Токен в заголовках
+При создании и удалении сотрудника нужно передавать токен `access_token` 
+и указать его в файле `env` => `TOKEN_ACCESS="user_token"`

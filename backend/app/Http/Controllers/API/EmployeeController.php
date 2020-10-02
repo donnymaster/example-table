@@ -34,7 +34,7 @@ class EmployeeController extends Controller
     public function store(EmployeeRequest $request)
     {
         try {
-            $employee = Employee::create($request->all());
+            $employee = Employee::create($request->validated());
 
             if($request->has('position')) {
                 $positions = $request->input('position');
@@ -65,13 +65,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $employee = Employee::find($id);
-
-        if(!$employee){
-            return response([
-                'error' => 'user not found'
-            ], JsonResponse::HTTP_NOT_FOUND);
-        }
+        $employee = Employee::findOrFail($id);
 
         $employee->delete();
 
